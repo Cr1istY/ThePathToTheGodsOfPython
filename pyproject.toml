@@ -1,0 +1,6 @@
+[project]
+name = "python-to-the-top"
+version = "0.1.0"
+description = "The way to the top of Python!"
+requires-python = ">=3.13"
+dependencies = []
