@@ -5,6 +5,8 @@
 from requests_html import HTMLSession
 import re
 import time
+import os
+
 
 def get_chapter(chapter, name='novals', session=HTMLSession()):
     r = session.get(chapter)
@@ -15,13 +17,16 @@ def get_chapter(chapter, name='novals', session=HTMLSession()):
     clean_chapter = re.sub(pattern + r'\s*', "", chapter_content.text)
     # print(title)
     # print(clean_chapter)
-    with open(name + '.txt', 'a', encoding='utf-8') as f:
+    folder_path = 'novals'
+    file_path = os.path.join(folder_path, name)
+    os.makedirs(folder_path, exist_ok=True)
+    with open(file_path + '.txt', 'a', encoding='utf-8') as f:
         f.write(title + '\n\n')
         f.write(clean_chapter)
     print(title + '已下载')
 
 if __name__ == '__main__':
-    url = 'https://www.mac3.cc/read/44334/'
+    url = 'https://www.mac3.cc/read/23235/'
     # name = input(f'请输入小说的名字：')
     time_start = time.time()
     session = HTMLSession()
